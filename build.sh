@@ -19,7 +19,7 @@ if [ "$GOARCH" == "arm64" ]; then
     CMAKE_REQUIRED_PARAMS="-DCMAKE_TOOLCHAIN_FILE=${DIRECTORY}/arm64.cmake ${CMAKE_REQUIRED_PARAMS}"
 else
     # Disable AVX512 since AMD and not all Intel CPUs support it
-    BUILD_FLAGS="-mno-avx512f ${BUILD_FLAGS}"
+    BUILD_FLAGS="-march=native ${BUILD_FLAGS}"
 fi
 
 export CFLAGS=${BUILD_FLAGS}
